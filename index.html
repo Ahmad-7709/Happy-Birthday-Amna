@@ -1,0 +1,1386 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Happy Birthday, My Love | To My Beautiful Wife</title>
+  <meta name="description" content="An elegant and deeply personalized birthday celebration crafted with all my love.">
+  <meta property="og:title" content="Happy Birthday, My Love">
+  <meta property="og:description" content="To my beautiful wife — a celebration of you, our journey, and the love we share.">
+  <meta property="og:type" content="website">
+
+  <!-- Google Fonts Preconnect & Stylesheets -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Alex+Brush&family=Great+Vibes&family=Montserrat:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400&family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;0,800;1,400;1,600&display=swap" rel="stylesheet">
+
+  <!-- Font Awesome Icons CDN (v6.5.1) -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" integrity="sha512-DTOQO9RWCH3ppGqcWaEA1BIZOC6xxalwEsw9c2QQeAIftl+Vegovlnee1c9QX4TctnWMn13TZye+giMm8e2LwA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+  <!-- Tailwind CSS via CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            rosegold: {
+              50: '#FDF7F7',
+              100: '#F9EDED',
+              200: '#F2D7D9',
+              300: '#E4B7BB',
+              400: '#D5969C',
+              500: '#B76E79', // Signature Rose Gold
+              600: '#9E5560',
+              700: '#7E3E47',
+              800: '#5F2D34',
+              900: '#461E23',
+            },
+            burgundy: {
+              50: '#FBF4F5',
+              100: '#F4E3E5',
+              200: '#E7C5C9',
+              300: '#D29FA6',
+              400: '#B26F79',
+              500: '#8A3E4B',
+              600: '#6C2B36',
+              700: '#531D26', // Deep romantic velvet burgundy
+              800: '#3D1219',
+              900: '#2A0B11',
+            },
+            cream: {
+              50: '#FFFDF9',
+              100: '#FDFBF7', // Base background
+              200: '#FAF6EF',
+              300: '#F4ECE0',
+              400: '#ECE0CE',
+              500: '#DFCEB7',
+            },
+            gold: {
+              300: '#F3E5AB',
+              400: '#E5C158',
+              500: '#D4AF37', // Warm metallic gold
+              600: '#B89727',
+              700: '#94751A',
+            }
+          },
+          fontFamily: {
+            serif: ['"Playfair Display"', 'Georgia', 'serif'],
+            cursive: ['"Great Vibes"', '"Alex Brush"', 'cursive'],
+            sans: ['"Montserrat"', 'sans-serif'],
+          },
+          boxShadow: {
+            'romantic': '0 20px 40px -15px rgba(183, 110, 121, 0.25)',
+            'gold-glow': '0 0 30px -5px rgba(212, 175, 55, 0.3)',
+            'soft-inner': 'inset 0 2px 4px 0 rgba(0, 0, 0, 0.04)',
+          }
+        }
+      }
+    }
+  </script>
+
+  <!-- GSAP & ScrollTrigger for Animations -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+
+  <!-- Canvas Confetti CDN -->
+  <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.9.3/dist/confetti.browser.min.js"></script>
+
+  <style>
+    /* Custom Smooth Scroll & Selection Styling */
+    ::selection {
+      background-color: #f2d7d9;
+      color: #531d26;
+    }
+
+    /* Ambient Canvas Position */
+    #ambient-canvas {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      pointer-events: none;
+      z-index: 1;
+    }
+
+    /* Gold Foil Text Shimmer Effect */
+    .text-gold-shimmer {
+      background: linear-gradient(135deg, #b76e79 0%, #d4af37 40%, #f3e5ab 50%, #d4af37 60%, #9e5560 100%);
+      background-size: 200% auto;
+      color: transparent;
+      -webkit-background-clip: text;
+      background-clip: text;
+      animation: shine 8s ease-in-out infinite;
+    }
+
+    @keyframes shine {
+      0%, 100% { background-position: 0% 50%; }
+      50% { background-position: 100% 50%; }
+    }
+
+    /* Deckle Edge Paper Texture for Love Letter */
+    .stationery-card {
+      background: #fdfcf9;
+      background-image: 
+        radial-gradient(#eed9db 0.75px, transparent 0.75px),
+        radial-gradient(#eed9db 0.75px, #fdfcf9 0.75px);
+      background-size: 30px 30px;
+      background-position: 0 0, 15px 15px;
+      position: relative;
+    }
+
+    .stationery-card::before {
+      content: '';
+      position: absolute;
+      inset: 8px;
+      border: 1px solid rgba(212, 175, 55, 0.35);
+      border-radius: 12px;
+      pointer-events: none;
+    }
+
+    /* Candle & Flame Animation */
+    .candle-flame {
+      width: 16px;
+      height: 30px;
+      background: radial-gradient(ellipse at bottom, #fff 15%, #fef08a 35%, #f97316 70%, #ea580c 100%);
+      border-radius: 50% 50% 20% 20% / 60% 60% 40% 40%;
+      box-shadow: 0 0 25px 10px rgba(251, 191, 36, 0.65), 0 0 50px 20px rgba(249, 115, 22, 0.35);
+      transform-origin: bottom center;
+      animation: flicker 2.4s ease-in-out infinite alternate;
+      transition: all 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+
+    @keyframes flicker {
+      0% { transform: scale(1) rotate(-1deg); }
+      25% { transform: scale(1.08, 0.96) rotate(1.5deg); }
+      50% { transform: scale(0.96, 1.05) rotate(-1.5deg); }
+      75% { transform: scale(1.04, 1.02) rotate(1deg); }
+      100% { transform: scale(1) rotate(0deg); }
+    }
+
+    .candle-flame.extinguished {
+      opacity: 0;
+      transform: scale(0.1) translateY(-10px);
+      filter: blur(4px);
+      box-shadow: none;
+    }
+
+    /* Smoke animation upon blowing */
+    .smoke-puff {
+      position: absolute;
+      top: -30px;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 8px;
+      height: 8px;
+      background: rgba(180, 160, 160, 0.6);
+      border-radius: 50%;
+      opacity: 0;
+      pointer-events: none;
+    }
+
+    .candle-flame.extinguished ~ .smoke-puff {
+      animation: smokeRise 1.8s ease-out forwards;
+    }
+
+    @keyframes smokeRise {
+      0% { opacity: 0.8; transform: translate(-50%, 0) scale(1); filter: blur(1px); }
+      50% { opacity: 0.5; transform: translate(-40%, -25px) scale(2.5); filter: blur(3px); }
+      100% { opacity: 0; transform: translate(-60%, -50px) scale(4); filter: blur(6px); }
+    }
+
+    /* Wax Seal Button */
+    .wax-seal {
+      background: radial-gradient(circle, #9e3644 0%, #701a26 70%, #500f19 100%);
+      box-shadow: 0 4px 15px rgba(112, 26, 38, 0.4), inset 0 2px 4px rgba(255, 255, 255, 0.25), inset 0 -2px 4px rgba(0, 0, 0, 0.4);
+    }
+
+    /* Typewriter Cursor */
+    .typewriter-cursor {
+      display: inline-block;
+      width: 2px;
+      height: 1.1em;
+      background-color: #8a3e4b;
+      vertical-align: text-bottom;
+      animation: blink 0.9s infinite;
+    }
+
+    @keyframes blink {
+      0%, 100% { opacity: 1; }
+      50% { opacity: 0; }
+    }
+
+    /* Custom Image Placeholder Fallback styling */
+    img.img-placeholder-card {
+      object-fit: cover;
+      background-color: #fdf7f7;
+    }
+  </style>
+</head>
+
+<body class="bg-cream-100 text-burgundy-900 font-sans antialiased overflow-x-hidden relative selection:bg-rosegold-200 selection:text-burgundy-900">
+
+  <!-- Ambient Sound & Fast Navigation Bar -->
+  <header class="fixed top-0 left-0 right-0 z-40 px-4 sm:px-8 py-3.5 backdrop-blur-md bg-cream-100/80 border-b border-rosegold-200/60 transition-all duration-300">
+    <div class="max-w-6xl mx-auto flex items-center justify-between">
+      <a href="#hero" class="flex items-center space-x-2 group">
+        <span class="w-8 h-8 rounded-full bg-rosegold-100 border border-rosegold-300 flex items-center justify-center text-rosegold-600 group-hover:scale-110 transition-transform">
+          <i class="fa-solid fa-heart text-xs"></i>
+        </span>
+        <span class="font-serif italic font-semibold text-lg text-burgundy-800 tracking-wide">For My Wife</span>
+      </a>
+
+      <!-- Navigation Links -->
+      <nav class="hidden md:flex items-center space-x-6 text-sm font-medium text-burgundy-700">
+        <a href="#our-story" class="hover:text-rosegold-600 transition-colors">Our Story</a>
+        <a href="#love-letter" class="hover:text-rosegold-600 transition-colors">Love Letter</a>
+        <a href="#photo-gallery" class="hover:text-rosegold-600 transition-colors">Memories</a>
+        <a href="#birthday-wish" class="hover:text-rosegold-600 transition-colors">Make a Wish</a>
+      </nav>
+
+      <!-- Ambient Audio Chime Controller (Zero Broken External Files - 100% Self Contained Synth) -->
+      <div class="flex items-center space-x-3">
+        <button id="audio-toggle-btn" class="inline-flex items-center space-x-2 px-3.5 py-1.5 rounded-full text-xs font-medium bg-rosegold-100 text-burgundy-800 border border-rosegold-300 hover:bg-rosegold-200 transition-all shadow-sm" title="Toggle gentle romantic ambient music">
+          <i id="audio-icon" class="fa-solid fa-volume-xmark text-rosegold-600"></i>
+          <span id="audio-text">Ambient Music</span>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <!-- ========================================================================= -->
+  <!-- 1. HERO SECTION (The Welcome) -->
+  <!-- ========================================================================= -->
+  <section id="hero" class="relative min-h-screen flex items-center justify-center px-4 sm:px-6 pt-16 pb-12 overflow-hidden bg-gradient-to-b from-cream-50 via-rosegold-50/50 to-cream-100">
+    <!-- Gentle Ambient Floating Particles Canvas -->
+    <canvas id="ambient-canvas"></canvas>
+
+    <!-- Subtle Radial Glow Background Orbs -->
+    <div class="absolute top-1/4 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[340px] sm:w-[600px] h-[340px] sm:h-[600px] bg-rosegold-200/40 rounded-full blur-3xl pointer-events-none -z-0"></div>
+    <div class="absolute bottom-10 right-10 w-72 h-72 bg-gold-300/20 rounded-full blur-2xl pointer-events-none -z-0"></div>
+
+    <div class="relative z-10 max-w-4xl mx-auto text-center flex flex-col items-center">
+      <!-- Delicate Eyebrow Badge -->
+      <div class="inline-flex items-center space-x-2.5 px-4 py-1.5 rounded-full bg-white/80 border border-rosegold-300 shadow-sm backdrop-blur-sm mb-6 animate__animated animate__fadeIn">
+        <i class="fa-solid fa-sparkles text-gold-500 text-xs"></i>
+        <span class="text-xs font-semibold tracking-wider text-burgundy-700 uppercase">A Celebration of You</span>
+        <i class="fa-solid fa-heart text-rosegold-500 text-xs"></i>
+      </div>
+
+      <!-- Main Headline: Large, Elegant, and Animated -->
+      <h1 class="text-4xl sm:text-6xl md:text-7xl lg:text-8xl font-serif font-bold text-burgundy-900 tracking-tight leading-[1.1] mb-4">
+        Happy Birthday, <br>
+        <span class="font-cursive font-normal text-rosegold-500 text-5xl sm:text-7xl md:text-8xl lg:text-9xl block mt-2 text-gold-shimmer">
+          My Beautiful Wife
+        </span>
+      </h1>
+
+      <!-- Heartfelt Sub-headline -->
+      <p class="mt-4 max-w-2xl text-base sm:text-lg md:text-xl font-light text-burgundy-700 leading-relaxed font-sans">
+        To the woman who fills every ordinary second with quiet grace, endless laughter, and boundless warmth. Today and every day, I celebrate you.
+      </p>
+
+      <!-- Romantic Date or Personal Note Indicator -->
+      <div class="mt-6 flex items-center justify-center space-x-4 text-xs sm:text-sm text-rosegold-700 font-medium">
+        <span class="h-px w-8 bg-rosegold-300"></span>
+        <span class="tracking-widest uppercase">Forever My Greatest Adventure</span>
+        <span class="h-px w-8 bg-rosegold-300"></span>
+      </div>
+
+      <!-- Action / Scroll Down Prompt -->
+      <div class="mt-12 flex flex-col items-center">
+        <a href="#our-story" class="group inline-flex items-center space-x-3 px-7 py-3.5 rounded-full bg-burgundy-700 hover:bg-burgundy-800 text-cream-50 font-medium text-sm tracking-wide shadow-romantic hover:shadow-gold-glow transition-all duration-300 transform hover:-translate-y-0.5">
+          <span>Step Into Our Journey</span>
+          <i class="fa-solid fa-arrow-down text-xs group-hover:translate-y-1 transition-transform"></i>
+        </a>
+
+        <!-- Gentle Bouncing Scroll Indicator -->
+        <a href="#our-story" class="mt-8 text-rosegold-400 hover:text-rosegold-600 transition-colors animate-bounce p-2" aria-label="Scroll down">
+          <i class="fa-solid fa-chevron-down text-lg"></i>
+        </a>
+      </div>
+    </div>
+  </section>
+
+
+  <!-- ========================================================================= -->
+  <!-- 2. OUR STORY / TIMELINE SECTION -->
+  <!-- ========================================================================= -->
+  <section id="our-story" class="relative py-24 px-4 sm:px-6 lg:px-8 max-w-6xl mx-auto">
+    <!-- Section Header -->
+    <div class="text-center max-w-2xl mx-auto mb-16 sm:mb-20">
+      <span class="text-xs font-semibold tracking-widest text-rosegold-500 uppercase">The Chapters We’ve Written</span>
+      <h2 class="text-3xl sm:text-4xl md:text-5xl font-serif font-bold text-burgundy-900 mt-2 mb-4">
+        Our Story, Hand in Hand
+      </h2>
+      <div class="w-16 h-0.5 bg-gradient-to-r from-transparent via-rosegold-400 to-transparent mx-auto mb-4"></div>
+      <p class="text-sm sm:text-base text-burgundy-700 font-light leading-relaxed">
+        Every milestone, every quiet glance, and every adventure that brought us to this moment.
+      </p>
+    </div>
+
+    <!-- Interactive Story Cards Timeline Grid -->
+    <div class="space-y-12 sm:space-y-16">
+
+      <!-- ITEM 1: How We Met -->
+      <article class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center bg-white/70 backdrop-blur-sm p-6 sm:p-8 rounded-2xl border border-rosegold-200/80 shadow-sm hover:shadow-romantic transition-all duration-500 group">
+        <!-- Photo Container -->
+        <div class="lg:col-span-6 overflow-hidden rounded-xl bg-rosegold-50 relative aspect-[4/3] shadow-inner">
+          <!-- PHOTO PLACEHOLDER: How We Met -->
+          <!-- Recommended photo: 800x600px of your first date, early courtship, or the day you crossed paths -->
+          <img 
+            src="images/how-we-met.jpg" 
+            alt="The Day Our Paths Crossed - How We Met" 
+            class="w-full h-full object-cover transform group-hover:scale-105 transition-transform duration-700 img-placeholder-card"
+            onerror="handleImgError(this, 'How We Met', 'The day two worlds aligned')"
+            loading="lazy"
+          >
+          <div class="absolute inset-0 bg-gradient-to-t from-burgundy-950/70 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end p-5">
+            <span class="text-cream-100 text-xs sm:text-sm font-medium tracking-wider uppercase flex items-center gap-2">
+              <i class="fa-solid fa-calendar-heart text-rosegold-300"></i> The Day Everything Changed
+            </span>
+          </div>
+        </div>
+        <!-- Story Content -->
+        <div class="lg:col-span-6 flex flex-col justify-center">
+          <div class="flex items-center space-x-3 text-xs font-semibold tracking-wider text-rosegold-500 uppercase mb-2">
+            <span>Chapter I</span>
+            <span class="w-1.5 h-1.5 rounded-full bg-rosegold-400"></span>
+            <span>The Beginning</span>
+          </div>
+          <h3 class="text-2xl sm:text-3xl font-serif font-bold text-burgundy-900 mb-3">How We Met</h3>
+          <p class="text-burgundy-700 text-sm sm:text-base leading-relaxed mb-5 font-light">
+            Before you, the world moved in predictable rhythms. But from that very first conversation, you brought a gentle brilliance into my life that made everything sharper, kinder, and infinitely more joyful.
+          </p>
+          <div class="flex items-center text-xs font-medium text-rosegold-600 bg-rosegold-50/80 w-fit px-3 py-1.5 rounded-full border border-rosegold-200">
+            <i class="fa-solid fa-sparkles mr-2 text-gold-500"></i> The spark that started our forever
+          </div>
+        </div>
+      </article>
+
+      <!-- ITEM 2: Our Favorite Vacation -->
+      <article class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center bg-white/70 backdrop-blur-sm p-6 sm:p-8 rounded-2xl border border-rosegold-200/80 shadow-sm hover:shadow-romantic transition-all duration-500 group">
+        <!-- Story Content -->
+        <div class="lg:col-span-6 order-2 lg:order-1 flex flex-col justify-center">
+          <div class="flex items-center space-x-3 text-xs font-semibold tracking-wider text-rosegold-500 uppercase mb-2">
+            <span>Chapter II</span>
+            <span class="w-1.5 h-1.5 rounded-full bg-rosegold-400"></span>
+            <span>Wanderlust & Wonder</span>
+          </div>
+          <h3 class="text-2xl sm:text-3xl font-serif font-bold text-burgundy-900 mb-3">Our Favorite Vacation</h3>
+          <p class="text-burgundy-700 text-sm sm:text-base leading-relaxed mb-5 font-light">
+            Standing together in breathtaking places, leaving footprints across distant shores, and realizing that no matter how magnificent the view was, the best part was always looking over and seeing your radiant smile beside me.
+          </p>
+          <div class="flex items-center text-xs font-medium text-rosegold-600 bg-rosegold-50/80 w-fit px-3 py-1.5 rounded-full border border-rosegold-200">
+            <i class="fa-solid fa-compass mr-2 text-gold-500"></i> Adventures are sweeter with you
+          </div>
+        </div>
+        <!-- Photo Container -->
+        <div class="lg:col-span-6 order-1 lg:order-2 overflow-hidden rounded-xl bg-rosegold-50 relative aspect-[4/3] shadow-inner">
+          <!-- PHOTO PLACEHOLDER: Our Favorite Vacation -->
+          <!-- Recommended photo: 800x600px of your favorite holiday, road trip, sunset beach, or mountain getaway -->
+          <img 
+            src="images/favorite-vacation.jpg" 
+            alt="Our Favorite Getaway - Vacation Memories" 
+            class="w-full h-full object-cover transform group-hover:scale-105 transition-transform duration-700 img-placeholder-card"
+            onerror="handleImgError(this, 'Our Favorite Vacation', 'Sunsets, shores & starry skies')"
+            loading="lazy"
+          >
+          <div class="absolute inset-0 bg-gradient-to-t from-burgundy-950/70 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end p-5">
+            <span class="text-cream-100 text-xs sm:text-sm font-medium tracking-wider uppercase flex items-center gap-2">
+              <i class="fa-solid fa-plane-departure text-rosegold-300"></i> Golden Hours & Horizon Lines
+            </span>
+          </div>
+        </div>
+      </article>
+
+      <!-- ITEM 3: A Quiet Everyday Moment -->
+      <article class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center bg-white/70 backdrop-blur-sm p-6 sm:p-8 rounded-2xl border border-rosegold-200/80 shadow-sm hover:shadow-romantic transition-all duration-500 group">
+        <!-- Photo Container -->
+        <div class="lg:col-span-6 overflow-hidden rounded-xl bg-rosegold-50 relative aspect-[4/3] shadow-inner">
+          <!-- PHOTO PLACEHOLDER: A Quiet Everyday Moment -->
+          <!-- Recommended photo: 800x600px candid shot of morning coffee, laughter at home, or Sunday cuddles -->
+          <img 
+            src="images/everyday-moment.jpg" 
+            alt="Quiet Everyday Moments - The Comfort of Us" 
+            class="w-full h-full object-cover transform group-hover:scale-105 transition-transform duration-700 img-placeholder-card"
+            onerror="handleImgError(this, 'A Quiet Everyday Moment', 'The peaceful beauty of ordinary days')"
+            loading="lazy"
+          >
+          <div class="absolute inset-0 bg-gradient-to-t from-burgundy-950/70 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end p-5">
+            <span class="text-cream-100 text-xs sm:text-sm font-medium tracking-wider uppercase flex items-center gap-2">
+              <i class="fa-solid fa-mug-hot text-rosegold-300"></i> The Sweetness of The Ordinary
+            </span>
+          </div>
+        </div>
+        <!-- Story Content -->
+        <div class="lg:col-span-6 flex flex-col justify-center">
+          <div class="flex items-center space-x-3 text-xs font-semibold tracking-wider text-rosegold-500 uppercase mb-2">
+            <span>Chapter III</span>
+            <span class="w-1.5 h-1.5 rounded-full bg-rosegold-400"></span>
+            <span>Little Sacred Things</span>
+          </div>
+          <h3 class="text-2xl sm:text-3xl font-serif font-bold text-burgundy-900 mb-3">A Quiet Everyday Moment</h3>
+          <p class="text-burgundy-700 text-sm sm:text-base leading-relaxed mb-5 font-light">
+            The grand celebrations are precious, but it is in the simple morning cups of coffee, our shared private jokes, and the quiet comfort of your head resting on my shoulder that I feel the deepest gratitude.
+          </p>
+          <div class="flex items-center text-xs font-medium text-rosegold-600 bg-rosegold-50/80 w-fit px-3 py-1.5 rounded-full border border-rosegold-200">
+            <i class="fa-solid fa-heart-pulse mr-2 text-gold-500"></i> Home is wherever you are
+          </div>
+        </div>
+      </article>
+
+      <!-- ITEM 4: Our Recent Milestone -->
+      <article class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center bg-white/70 backdrop-blur-sm p-6 sm:p-8 rounded-2xl border border-rosegold-200/80 shadow-sm hover:shadow-romantic transition-all duration-500 group">
+        <!-- Story Content -->
+        <div class="lg:col-span-6 order-2 lg:order-1 flex flex-col justify-center">
+          <div class="flex items-center space-x-3 text-xs font-semibold tracking-wider text-rosegold-500 uppercase mb-2">
+            <span>Chapter IV</span>
+            <span class="w-1.5 h-1.5 rounded-full bg-rosegold-400"></span>
+            <span>Growing Stronger</span>
+          </div>
+          <h3 class="text-2xl sm:text-3xl font-serif font-bold text-burgundy-900 mb-3">Our Recent Milestone</h3>
+          <p class="text-burgundy-700 text-sm sm:text-base leading-relaxed mb-5 font-light">
+            Every year we conquer new heights, support each other’s wildest ambitions, and weave deeper roots into the life we are building together. You are my anchor, my muse, and my proudest partnership.
+          </p>
+          <div class="flex items-center text-xs font-medium text-rosegold-600 bg-rosegold-50/80 w-fit px-3 py-1.5 rounded-full border border-rosegold-200">
+            <i class="fa-solid fa-champagne-glasses mr-2 text-gold-500"></i> To every tomorrow yet to come
+          </div>
+        </div>
+        <!-- Photo Container -->
+        <div class="lg:col-span-6 order-1 lg:order-2 overflow-hidden rounded-xl bg-rosegold-50 relative aspect-[4/3] shadow-inner">
+          <!-- PHOTO PLACEHOLDER: Our Recent Milestone -->
+          <!-- Recommended photo: 800x600px of an anniversary, wedding day, new home, or major accomplishment -->
+          <img 
+            src="images/recent-milestone.jpg" 
+            alt="Our Milestone Celebration - Another Victory Together" 
+            class="w-full h-full object-cover transform group-hover:scale-105 transition-transform duration-700 img-placeholder-card"
+            onerror="handleImgError(this, 'Our Recent Milestone', 'Celebrating how far love has carried us')"
+            loading="lazy"
+          >
+          <div class="absolute inset-0 bg-gradient-to-t from-burgundy-950/70 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end p-5">
+            <span class="text-cream-100 text-xs sm:text-sm font-medium tracking-wider uppercase flex items-center gap-2">
+              <i class="fa-solid fa-trophy-star text-rosegold-300"></i> Another Milestone Hand In Hand
+            </span>
+          </div>
+        </div>
+      </article>
+
+    </div>
+  </section>
+
+
+  <!-- ========================================================================= -->
+  <!-- 3. THE LOVE LETTER / MESSAGE SECTION -->
+  <!-- ========================================================================= -->
+  <section id="love-letter" class="relative py-24 px-4 sm:px-6 lg:px-8 bg-gradient-to-b from-cream-100 via-rosegold-50/60 to-cream-100">
+    <div class="max-w-3xl mx-auto">
+      
+      <!-- Section Tagline -->
+      <div class="text-center mb-12">
+        <span class="text-xs font-semibold tracking-widest text-rosegold-500 uppercase">From The Depths of My Heart</span>
+        <h2 class="text-3xl sm:text-4xl md:text-5xl font-serif font-bold text-burgundy-900 mt-2">
+          A Letter For You
+        </h2>
+        <div class="w-12 h-0.5 bg-rosegold-300 mx-auto mt-3"></div>
+      </div>
+
+      <!-- Luxury Stationery Letter Container -->
+      <div class="stationery-card rounded-2xl shadow-romantic p-8 sm:p-12 md:p-16 border border-rosegold-200 relative overflow-hidden">
+        
+        <!-- Wax Seal Embellishment -->
+        <div class="flex justify-center -mt-4 sm:-mt-6 mb-8">
+          <div class="wax-seal w-14 h-14 rounded-full flex items-center justify-center text-gold-300 shadow-lg cursor-pointer transform hover:scale-105 transition-transform" title="Sealed with eternal love">
+            <i class="fa-solid fa-heart text-xl"></i>
+          </div>
+        </div>
+
+        <!-- Date & Salutation -->
+        <div class="flex flex-col sm:flex-row items-start sm:items-center justify-between border-b border-rosegold-200/80 pb-4 mb-8 text-sm">
+          <span class="font-serif italic text-lg text-burgundy-900 font-semibold">To My Dearest Wife,</span>
+          <span class="text-xs text-rosegold-700 tracking-wider uppercase font-medium mt-1 sm:mt-0">On Your Special Day</span>
+        </div>
+
+        <!-- Interactive Typewriter / Letter Body Container -->
+        <div class="relative min-h-[300px] text-burgundy-900 font-serif leading-relaxed text-base sm:text-lg sm:leading-loose">
+          
+          <!-- TYPEWRITER DISPLAY TEXT -->
+          <div id="typewriter-content" class="space-y-6">
+            <!-- The letter is typed here dynamically, or displayed fully if user toggles -->
+          </div>
+
+          <!-- FALLBACK & EDITABLE TEXT SOURCE -->
+          <!-- 
+            =========================================================================
+            [INSERT YOUR PERSONALIZED LOVE LETTER HERE]
+            You can customize every sentence below to make it truly personal to her!
+            =========================================================================
+          -->
+          <div id="original-letter-text" class="hidden">
+            <p>Happy Birthday to the most breathtaking, kind-hearted, and incredible woman I have ever known.</p>
+            <p>If you were to ask me what I cherish most about our life together, I could never point to just one thing. It is the effortless warmth of your laugh across a crowded room. It is how fiercely you care for the people around you. It is the way you hold my hand when the world feels heavy and remind me that we can weather anything as long as we are side by side.</p>
+            <p>Every single year with you is richer and more meaningful than the last. You make ordinary moments feel like poetry and turn every quiet evening into a sanctuary. I look at you today, radiant and full of grace, and I fall in love with you all over again.</p>
+            <p>My wish for you this year is that you feel as deeply appreciated, cherished, and celebrated as you truly are. May your heart be full of peace, your days brimming with delight, and your dreams unfolding one by one with me right here cheering you on.</p>
+            <p>Thank you for choosing me every day. You are my best friend, my soulmate, and my forever home.</p>
+          </div>
+
+          <span id="cursor-indicator" class="typewriter-cursor"></span>
+        </div>
+
+        <!-- Letter Closing Signature -->
+        <div class="mt-12 pt-6 border-t border-rosegold-200/80 flex flex-col items-end">
+          <span class="text-sm font-serif italic text-burgundy-700">Forever & always yours,</span>
+          <!-- Calligraphy Signature Placeholder -->
+          <span class="font-cursive text-3xl sm:text-4xl text-rosegold-600 mt-2">
+            <!-- REPLACE WITH YOUR NAME -->
+            With All My Love
+          </span>
+        </div>
+
+        <!-- Letter Animation Control Buttons -->
+        <div class="mt-8 flex justify-center items-center space-x-4">
+          <button id="replay-letter-btn" class="text-xs font-medium text-rosegold-600 hover:text-burgundy-800 transition-colors flex items-center gap-1.5 px-3 py-1.5 rounded-lg hover:bg-rosegold-100/50">
+            <i class="fa-solid fa-arrow-rotate-left"></i>
+            <span>Replay Typing Effect</span>
+          </button>
+          <span class="text-rosegold-300">|</span>
+          <button id="reveal-all-btn" class="text-xs font-medium text-rosegold-600 hover:text-burgundy-800 transition-colors flex items-center gap-1.5 px-3 py-1.5 rounded-lg hover:bg-rosegold-100/50">
+            <i class="fa-solid fa-book-open"></i>
+            <span>Read Full Letter</span>
+          </button>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+
+  <!-- ========================================================================= -->
+  <!-- 4. INTERACTIVE PHOTO GALLERY -->
+  <!-- ========================================================================= -->
+  <section id="photo-gallery" class="py-24 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto">
+    <!-- Gallery Header -->
+    <div class="text-center max-w-2xl mx-auto mb-16">
+      <span class="text-xs font-semibold tracking-widest text-rosegold-500 uppercase">A Tapestry of Moments</span>
+      <h2 class="text-3xl sm:text-4xl md:text-5xl font-serif font-bold text-burgundy-900 mt-2 mb-4">
+        Our Favorite Memories
+      </h2>
+      <div class="w-16 h-0.5 bg-gradient-to-r from-transparent via-rosegold-400 to-transparent mx-auto mb-4"></div>
+      <p class="text-sm sm:text-base text-burgundy-700 font-light">
+        Click any snapshot to enlarge and view our cherished moments together.
+      </p>
+    </div>
+
+    <!-- Responsive CSS Masonry / Grid Gallery (8 Image Placeholders) -->
+    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+
+      <!-- GALLERY ITEM 1 -->
+      <!-- PHOTO PLACEHOLDER: Gallery 1 (Recommended: 800x1000px portrait of spontaneous laughter or joy) -->
+      <div class="gallery-item group relative overflow-hidden rounded-2xl bg-rosegold-50 aspect-[3/4] cursor-pointer shadow-sm hover:shadow-romantic border border-rosegold-200/80 transition-all duration-500"
+           data-full="images/gallery-1.jpg"
+           data-caption="Your spontaneous laughter that lights up any room">
+        <img 
+          src="images/gallery-1.jpg" 
+          alt="Your Spontaneous Laughter" 
+          class="w-full h-full object-cover transform group-hover:scale-110 transition-transform duration-700 img-placeholder-card"
+          onerror="handleImgError(this, 'Memory 01', 'Laughter that brightens my day')"
+          loading="lazy"
+        >
+        <div class="absolute inset-0 bg-gradient-to-t from-burgundy-950/80 via-burgundy-950/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex flex-col justify-end p-5">
+          <i class="fa-solid fa-magnifying-glass-plus text-rosegold-300 text-lg mb-2 transform -translate-y-2 group-hover:translate-y-0 transition-transform"></i>
+          <span class="text-cream-50 font-serif font-medium text-base">Pure Joy</span>
+          <span class="text-rosegold-200 text-xs font-light mt-0.5">That smile I never tire of</span>
+        </div>
+      </div>
+
+      <!-- GALLERY ITEM 2 -->
+      <!-- PHOTO PLACEHOLDER: Gallery 2 (Recommended: 800x1000px golden hour sunset or outdoor photo) -->
+      <div class="gallery-item group relative overflow-hidden rounded-2xl bg-rosegold-50 aspect-[3/4] cursor-pointer shadow-sm hover:shadow-romantic border border-rosegold-200/80 transition-all duration-500"
+           data-full="images/gallery-2.jpg"
+           data-caption="Golden hour walks and chasing horizons together">
+        <img 
+          src="images/gallery-2.jpg" 
+          alt="Golden Hour Moments" 
+          class="w-full h-full object-cover transform group-hover:scale-110 transition-transform duration-700 img-placeholder-card"
+          onerror="handleImgError(this, 'Memory 02', 'Golden hour moments with you')"
+          loading="lazy"
+        >
+        <div class="absolute inset-0 bg-gradient-to-t from-burgundy-950/80 via-burgundy-950/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex flex-col justify-end p-5">
+          <i class="fa-solid fa-magnifying-glass-plus text-rosegold-300 text-lg mb-2 transform -translate-y-2 group-hover:translate-y-0 transition-transform"></i>
+          <span class="text-cream-50 font-serif font-medium text-base">Golden Glow</span>
+          <span class="text-rosegold-200 text-xs font-light mt-0.5">Under the warm evening sun</span>
+        </div>
+      </div>
+
+      <!-- GALLERY ITEM 3 -->
+      <!-- PHOTO PLACEHOLDER: Gallery 3 (Recommended: 800x1000px romantic dinner or dressed-up date night) -->
+      <div class="gallery-item group relative overflow-hidden rounded-2xl bg-rosegold-50 aspect-[3/4] cursor-pointer shadow-sm hover:shadow-romantic border border-rosegold-200/80 transition-all duration-500"
+           data-full="images/gallery-3.jpg"
+           data-caption="A memorable date night celebration dressed to the nines">
+        <img 
+          src="images/gallery-3.jpg" 
+          alt="Date Night Memories" 
+          class="w-full h-full object-cover transform group-hover:scale-110 transition-transform duration-700 img-placeholder-card"
+          onerror="handleImgError(this, 'Memory 03', 'A special date night dinner')"
+          loading="lazy"
+        >
+        <div class="absolute inset-0 bg-gradient-to-t from-burgundy-950/80 via-burgundy-950/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex flex-col justify-end p-5">
+          <i class="fa-solid fa-magnifying-glass-plus text-rosegold-300 text-lg mb-2 transform -translate-y-2 group-hover:translate-y-0 transition-transform"></i>
+          <span class="text-cream-50 font-serif font-medium text-base">Special Nights</span>
+          <span class="text-rosegold-200 text-xs font-light mt-0.5">Dressed up in celebration</span>
+        </div>
+      </div>
+
+      <!-- GALLERY ITEM 4 -->
+      <!-- PHOTO PLACEHOLDER: Gallery 4 (Recommended: 800x1000px cozy morning, kitchen baking, or coffee time) -->
+      <div class="gallery-item group relative overflow-hidden rounded-2xl bg-rosegold-50 aspect-[3/4] cursor-pointer shadow-sm hover:shadow-romantic border border-rosegold-200/80 transition-all duration-500"
+           data-full="images/gallery-4.jpg"
+           data-caption="Quiet morning coffees and comfortable Sunday silences">
+        <img 
+          src="images/gallery-4.jpg" 
+          alt="Cozy Morning Memories" 
+          class="w-full h-full object-cover transform group-hover:scale-110 transition-transform duration-700 img-placeholder-card"
+          onerror="handleImgError(this, 'Memory 04', 'Cozy mornings & warm coffee')"
+          loading="lazy"
+        >
+        <div class="absolute inset-0 bg-gradient-to-t from-burgundy-950/80 via-burgundy-950/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex flex-col justify-end p-5">
+          <i class="fa-solid fa-magnifying-glass-plus text-rosegold-300 text-lg mb-2 transform -translate-y-2 group-hover:translate-y-0 transition-transform"></i>
+          <span class="text-cream-50 font-serif font-medium text-base">Slow Mornings</span>
+          <span class="text-rosegold-200 text-xs font-light mt-0.5">The comfort of your company</span>
+        </div>
+      </div>
+
+      <!-- GALLERY ITEM 5 -->
+      <!-- PHOTO PLACEHOLDER: Gallery 5 (Recommended: 800x1000px scenic hiking, nature, or beach photo) -->
+      <div class="gallery-item group relative overflow-hidden rounded-2xl bg-rosegold-50 aspect-[3/4] cursor-pointer shadow-sm hover:shadow-romantic border border-rosegold-200/80 transition-all duration-500"
+           data-full="images/gallery-5.jpg"
+           data-caption="Exploring scenic heights and feeling on top of the world">
+        <img 
+          src="images/gallery-5.jpg" 
+          alt="Adventures and Exploration" 
+          class="w-full h-full object-cover transform group-hover:scale-110 transition-transform duration-700 img-placeholder-card"
+          onerror="handleImgError(this, 'Memory 05', 'Exploring the wild world together')"
+          loading="lazy"
+        >
+        <div class="absolute inset-0 bg-gradient-to-t from-burgundy-950/80 via-burgundy-950/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex flex-col justify-end p-5">
+          <i class="fa-solid fa-magnifying-glass-plus text-rosegold-300 text-lg mb-2 transform -translate-y-2 group-hover:translate-y-0 transition-transform"></i>
+          <span class="text-cream-50 font-serif font-medium text-base">New Horizons</span>
+          <span class="text-rosegold-200 text-xs font-light mt-0.5">Every road leads to you</span>
+        </div>
+      </div>
+
+      <!-- GALLERY ITEM 6 -->
+      <!-- PHOTO PLACEHOLDER: Gallery 6 (Recommended: 800x1000px candid, funny face, or playful couple moment) -->
+      <div class="gallery-item group relative overflow-hidden rounded-2xl bg-rosegold-50 aspect-[3/4] cursor-pointer shadow-sm hover:shadow-romantic border border-rosegold-200/80 transition-all duration-500"
+           data-full="images/gallery-6.jpg"
+           data-caption="Our silly inside jokes and uncontrollable giggles">
+        <img 
+          src="images/gallery-6.jpg" 
+          alt="Playful Couple Moments" 
+          class="w-full h-full object-cover transform group-hover:scale-110 transition-transform duration-700 img-placeholder-card"
+          onerror="handleImgError(this, 'Memory 06', 'Playful smiles and silly moments')"
+          loading="lazy"
+        >
+        <div class="absolute inset-0 bg-gradient-to-t from-burgundy-950/80 via-burgundy-950/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex flex-col justify-end p-5">
+          <i class="fa-solid fa-magnifying-glass-plus text-rosegold-300 text-lg mb-2 transform -translate-y-2 group-hover:translate-y-0 transition-transform"></i>
+          <span class="text-cream-50 font-serif font-medium text-base">Playful Hearts</span>
+          <span class="text-rosegold-200 text-xs font-light mt-0.5">Never losing our kid-like spark</span>
+        </div>
+      </div>
+
+      <!-- GALLERY ITEM 7 -->
+      <!-- PHOTO PLACEHOLDER: Gallery 7 (Recommended: 800x1000px holiday celebration, festival, or anniversary) -->
+      <div class="gallery-item group relative overflow-hidden rounded-2xl bg-rosegold-50 aspect-[3/4] cursor-pointer shadow-sm hover:shadow-romantic border border-rosegold-200/80 transition-all duration-500"
+           data-full="images/gallery-7.jpg"
+           data-caption="Celebrating another festive season wrapped in love">
+        <img 
+          src="images/gallery-7.jpg" 
+          alt="Holiday & Celebration Memories" 
+          class="w-full h-full object-cover transform group-hover:scale-110 transition-transform duration-700 img-placeholder-card"
+          onerror="handleImgError(this, 'Memory 07', 'Holidays & festive joy together')"
+          loading="lazy"
+        >
+        <div class="absolute inset-0 bg-gradient-to-t from-burgundy-950/80 via-burgundy-950/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex flex-col justify-end p-5">
+          <i class="fa-solid fa-magnifying-glass-plus text-rosegold-300 text-lg mb-2 transform -translate-y-2 group-hover:translate-y-0 transition-transform"></i>
+          <span class="text-cream-50 font-serif font-medium text-base">Celebrations</span>
+          <span class="text-rosegold-200 text-xs font-light mt-0.5">Memories carved in gold</span>
+        </div>
+      </div>
+
+      <!-- GALLERY ITEM 8 -->
+      <!-- PHOTO PLACEHOLDER: Gallery 8 (Recommended: 800x1000px hand-holding, rings, or peaceful portrait) -->
+      <div class="gallery-item group relative overflow-hidden rounded-2xl bg-rosegold-50 aspect-[3/4] cursor-pointer shadow-sm hover:shadow-romantic border border-rosegold-200/80 transition-all duration-500"
+           data-full="images/gallery-8.jpg"
+           data-caption="Hand in hand, building a lifetime of love and dreams">
+        <img 
+          src="images/gallery-8.jpg" 
+          alt="Hand in Hand Forever" 
+          class="w-full h-full object-cover transform group-hover:scale-110 transition-transform duration-700 img-placeholder-card"
+          onerror="handleImgError(this, 'Memory 08', 'Hand in hand, forever and always')"
+          loading="lazy"
+        >
+        <div class="absolute inset-0 bg-gradient-to-t from-burgundy-950/80 via-burgundy-950/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex flex-col justify-end p-5">
+          <i class="fa-solid fa-magnifying-glass-plus text-rosegold-300 text-lg mb-2 transform -translate-y-2 group-hover:translate-y-0 transition-transform"></i>
+          <span class="text-cream-50 font-serif font-medium text-base">Forever Us</span>
+          <span class="text-rosegold-200 text-xs font-light mt-0.5">My favorite place to be</span>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+
+  <!-- ========================================================================= -->
+  <!-- LIGHTBOX MODAL (Pure JavaScript Implementation) -->
+  <!-- ========================================================================= -->
+  <div id="lightbox-modal" class="fixed inset-0 z-50 hidden bg-burgundy-950/90 backdrop-blur-md flex items-center justify-center p-4 sm:p-8 transition-opacity duration-300 opacity-0" role="dialog" aria-modal="true">
+    
+    <!-- Close Button -->
+    <button id="lightbox-close" class="absolute top-6 right-6 z-10 w-11 h-11 rounded-full bg-white/10 hover:bg-white/20 text-cream-50 flex items-center justify-center transition-colors focus:outline-none" aria-label="Close image">
+      <i class="fa-solid fa-xmark text-lg"></i>
+    </button>
+
+    <!-- Navigation: Prev -->
+    <button id="lightbox-prev" class="absolute left-4 sm:left-8 z-10 w-12 h-12 rounded-full bg-white/10 hover:bg-white/20 text-cream-50 flex items-center justify-center transition-colors focus:outline-none" aria-label="Previous image">
+      <i class="fa-solid fa-chevron-left text-lg"></i>
+    </button>
+
+    <!-- Navigation: Next -->
+    <button id="lightbox-next" class="absolute right-4 sm:right-8 z-10 w-12 h-12 rounded-full bg-white/10 hover:bg-white/20 text-cream-50 flex items-center justify-center transition-colors focus:outline-none" aria-label="Next image">
+      <i class="fa-solid fa-chevron-right text-lg"></i>
+    </button>
+
+    <!-- Modal Content Container -->
+    <div class="max-w-4xl max-h-[90vh] flex flex-col items-center justify-center relative">
+      <div class="relative overflow-hidden rounded-xl shadow-2xl border border-rosegold-300/30 max-h-[75vh]">
+        <img id="lightbox-img" src="" alt="Enlarged Memory" class="max-h-[75vh] w-auto object-contain rounded-xl">
+      </div>
+      <p id="lightbox-caption" class="mt-4 text-cream-100 font-serif text-center text-sm sm:text-base max-w-xl px-4"></p>
+      <span id="lightbox-counter" class="text-rosegold-300 text-xs mt-1 font-sans tracking-widest uppercase"></span>
+    </div>
+  </div>
+
+
+  <!-- ========================================================================= -->
+  <!-- 5. BIRTHDAY WISH / OUTRO SECTION (Blow Out The Candles) -->
+  <!-- ========================================================================= -->
+  <section id="birthday-wish" class="relative py-28 px-4 sm:px-6 lg:px-8 bg-gradient-to-b from-cream-100 via-rosegold-50 to-cream-200/80 overflow-hidden text-center">
+    
+    <!-- Background Sparkle Accent Glow -->
+    <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-96 h-96 bg-gold-400/10 rounded-full blur-3xl pointer-events-none"></div>
+
+    <div class="max-w-3xl mx-auto relative z-10 flex flex-col items-center">
+      
+      <!-- Section Tag -->
+      <span class="text-xs font-semibold tracking-widest text-rosegold-500 uppercase mb-2">The Culmination</span>
+      <h2 class="text-3xl sm:text-5xl font-serif font-bold text-burgundy-900 mb-4">
+        Make A Birthday Wish
+      </h2>
+      <p class="text-burgundy-700 text-sm sm:text-base font-light max-w-lg mb-12">
+        Close your eyes, hold a secret wish in your heart, and blow out the candle below.
+      </p>
+
+      <!-- Digital Birthday Cake & Animated Candle Component -->
+      <div class="relative my-6 flex flex-col items-center cursor-pointer group" id="candle-trigger">
+        
+        <!-- Candle Wick & Flame -->
+        <div class="relative flex flex-col items-center mb-1">
+          <!-- Animated Flame -->
+          <div id="candle-flame" class="candle-flame"></div>
+          <!-- Smoke Puff on extinguish -->
+          <div class="smoke-puff"></div>
+          <!-- Wick -->
+          <div class="w-1 h-3 bg-neutral-800 rounded-t"></div>
+        </div>
+
+        <!-- Candle Stick -->
+        <div class="w-5 h-16 bg-gradient-to-b from-rosegold-200 via-rosegold-300 to-rosegold-400 rounded-sm shadow-md border-t border-white/60 relative">
+          <!-- Spiral Gold Wax Stripe -->
+          <div class="absolute inset-0 opacity-40 bg-[linear-gradient(45deg,transparent_25%,rgba(212,175,55,0.7)_50%,transparent_75%)] bg-[length:10px_10px]"></div>
+        </div>
+
+        <!-- Tiered Minimalist Cake Base -->
+        <div class="w-36 h-9 bg-cream-50 border border-rosegold-200 rounded-t-lg shadow-sm -mt-1 flex items-center justify-center relative">
+          <!-- Frosting drip details -->
+          <div class="absolute -top-1 inset-x-2 h-2 bg-rosegold-100 rounded-full"></div>
+          <span class="text-[10px] tracking-widest uppercase font-serif text-rosegold-500">Pure Love</span>
+        </div>
+        <div class="w-52 h-11 bg-cream-200/90 border border-rosegold-300 rounded-t-lg shadow-md -mt-1 flex items-center justify-center">
+          <span class="text-xs font-serif italic text-burgundy-700">Happy Birthday</span>
+        </div>
+        <!-- Cake Stand Glass Base -->
+        <div class="w-60 h-3 bg-rosegold-300/40 rounded-full blur-[1px] -mt-0.5"></div>
+      </div>
+
+      <!-- Action Button: Blow Out The Candle -->
+      <div class="mt-8">
+        <button id="blow-candles-btn" class="inline-flex items-center space-x-3 px-8 py-4 rounded-full bg-gradient-to-r from-burgundy-700 via-burgundy-800 to-burgundy-900 text-cream-50 font-medium text-base shadow-romantic hover:shadow-gold-glow transform hover:-translate-y-1 active:translate-y-0 transition-all duration-300 focus:outline-none">
+          <i class="fa-solid fa-wand-magic-sparkles text-gold-400"></i>
+          <span id="candle-btn-text">Blow Out The Candle & Make A Wish</span>
+        </button>
+      </div>
+
+      <!-- Post-Wish Permanent Celebration Reveal Block -->
+      <div id="wish-revealed" class="mt-14 max-w-2xl opacity-0 translate-y-6 transition-all duration-1000 hidden">
+        
+        <div class="p-8 sm:p-10 rounded-2xl bg-white/90 backdrop-blur-sm border border-gold-400/50 shadow-romantic relative">
+          <div class="text-gold-500 text-2xl mb-3">
+            <i class="fa-solid fa-crown"></i>
+          </div>
+
+          <h3 class="text-2xl sm:text-3xl font-serif font-bold text-burgundy-900 mb-3">
+            May Every Wish Come True
+          </h3>
+
+          <p class="text-burgundy-800 text-base sm:text-lg leading-relaxed font-light mb-6">
+            May this upcoming year bring you boundless happiness, thrilling discoveries, quiet serenity, and the constant reminder of how deeply you are loved.
+          </p>
+
+          <!-- Romantic Permanent Closing Quote -->
+          <blockquote class="border-t border-rosegold-200 pt-6 mt-6">
+            <p class="font-serif italic text-lg sm:text-xl text-burgundy-900 leading-relaxed">
+              “In all the world, there is no heart for me like yours. <br class="hidden sm:inline">
+              In all the world, there is no love for you like mine.”
+            </p>
+            <footer class="mt-3 text-xs tracking-widest uppercase font-semibold text-rosegold-600">
+              — Maya Angelou
+            </footer>
+          </blockquote>
+        </div>
+
+        <!-- Relight option for replayability -->
+        <button id="relight-candle-btn" class="mt-6 text-xs text-rosegold-700 hover:text-burgundy-900 font-medium tracking-wide uppercase inline-flex items-center gap-1.5 transition-colors">
+          <i class="fa-solid fa-fire-flame-curved text-gold-500"></i>
+          <span>Relight the candle</span>
+        </button>
+
+      </div>
+
+    </div>
+  </section>
+
+
+  <!-- ========================================================================= -->
+  <!-- FOOTER -->
+  <!-- ========================================================================= -->
+  <footer class="py-12 px-4 border-t border-rosegold-200/70 bg-cream-100 text-center text-xs text-burgundy-600">
+    <div class="max-w-4xl mx-auto flex flex-col items-center space-y-3">
+      <div class="w-8 h-8 rounded-full bg-rosegold-100 border border-rosegold-200 flex items-center justify-center text-rosegold-500">
+        <i class="fa-solid fa-heart"></i>
+      </div>
+      <p class="font-serif text-sm text-burgundy-800 font-medium">
+        Designed & Coded with All My Heart for My Wife
+      </p>
+      <p class="text-rosegold-700/80 font-light">
+        A forever tribute to our love. Happy Birthday!
+      </p>
+    </div>
+  </footer>
+
+
+  <!-- ========================================================================= -->
+  <!-- JAVASCRIPT LOGIC & ANIMATION CONTROLLERS -->
+  <!-- ========================================================================= -->
+  <script>
+    /*
+      =============================================================================
+      1. GRACEFUL IMAGE PLACEHOLDER FALLBACK GENERATOR
+      =============================================================================
+      Generates an elegant, high-contrast SVG placeholder card if local image
+      files have not yet been placed into the 'images/' folder. This prevents
+      broken image icons and ensures the site looks magnificent out of the box!
+    */
+    function handleImgError(imgElement, titleText, subtitleText) {
+      const title = titleText || 'Our Memory';
+      const subtitle = subtitleText || 'A beautiful moment in time';
+      
+      // Generate clean inline SVG with rose gold gradients & delicate typography
+      const svg = `
+        <svg xmlns="http://www.w3.org/2000/svg" width="800" height="600" viewBox="0 0 800 600">
+          <defs>
+            <linearGradient id="grad" x1="0%" y1="0%" x2="100%" y2="100%">
+              <stop offset="0%" stop-color="#FAF1F2"/>
+              <stop offset="50%" stop-color="#F5E4E6"/>
+              <stop offset="100%" stop-color="#EED4D7"/>
+            </linearGradient>
+            <pattern id="heart-pattern" width="40" height="40" patternUnits="userSpaceOnUse" opacity="0.12">
+              <path d="M20,10 Q25,2 30,10 Q35,18 20,30 Q5,18 10,10 Q15,2 20,10 Z" fill="#B76E79"/>
+            </pattern>
+          </defs>
+          <rect width="800" height="600" fill="url(#grad)"/>
+          <rect width="800" height="600" fill="url(#heart-pattern)"/>
+          <rect x="25" y="25" width="750" height="550" rx="16" fill="none" stroke="#D4AF37" stroke-width="1.5" stroke-dasharray="8 6" opacity="0.5"/>
+          
+          <g transform="translate(400, 240)">
+            <circle cx="0" cy="0" r="46" fill="#FFFFFF" opacity="0.85"/>
+            <path d="M-14,-6 C-14,-14 0,-14 0,-4 C0,-14 14,-14 14,-6 C14,8 0,16 0,20 C0,16 -14,8 -14,-6 Z" fill="#B76E79"/>
+          </g>
+          
+          <text x="400" y="340" font-family="'Playfair Display', Georgia, serif" font-size="28" font-weight="bold" fill="#4A121A" text-anchor="middle">${title}</text>
+          <text x="400" y="380" font-family="'Montserrat', sans-serif" font-size="15" font-weight="normal" fill="#7E3E47" text-anchor="middle">${subtitle}</text>
+          <text x="400" y="440" font-family="'Montserrat', sans-serif" font-size="12" font-weight="500" fill="#9E5560" letter-spacing="2" text-anchor="middle">PHOTO PLACEHOLDER — SWAP VIA IMAGES/ FOLDER</text>
+        </svg>
+      `;
+      imgElement.src = `data:image/svg+xml;charset=utf-8,${encodeURIComponent(svg)}`;
+      imgElement.removeAttribute('onerror');
+    }
+
+    /*
+      =============================================================================
+      2. AMBIENT FLOATING HEARTS & PARTICLES CANVAS
+      =============================================================================
+      Draws soft drifting rose gold hearts, sparkling stardust, and delicate bokeh.
+    */
+    const canvas = document.getElementById('ambient-canvas');
+    const ctx = canvas.getContext('2d');
+    let particles = [];
+    let animationFrameId;
+
+    function resizeCanvas() {
+      const hero = document.getElementById('hero');
+      canvas.width = hero.clientWidth;
+      canvas.height = hero.clientHeight;
+    }
+    window.addEventListener('resize', resizeCanvas);
+    resizeCanvas();
+
+    class Particle {
+      constructor() {
+        this.reset();
+      }
+      reset() {
+        this.x = Math.random() * canvas.width;
+        this.y = canvas.height + Math.random() * 40;
+        this.size = Math.random() * 9 + 4; // Particle size
+        this.speedY = Math.random() * 0.7 + 0.3; // Upward drift speed
+        this.speedX = Math.sin(Math.random() * Math.PI * 2) * 0.35;
+        this.opacity = Math.random() * 0.45 + 0.15;
+        this.rotation = Math.random() * Math.PI * 2;
+        this.rotationSpeed = (Math.random() - 0.5) * 0.02;
+        this.type = Math.random() > 0.45 ? 'heart' : 'sparkle';
+      }
+      update() {
+        this.y -= this.speedY;
+        this.x += this.speedX;
+        this.rotation += this.rotationSpeed;
+        if (this.y < -30 || this.x < -30 || this.x > canvas.width + 30) {
+          this.reset();
+        }
+      }
+      draw() {
+        ctx.save();
+        ctx.translate(this.x, this.y);
+        ctx.rotate(this.rotation);
+        ctx.globalAlpha = this.opacity;
+
+        if (this.type === 'heart') {
+          ctx.fillStyle = '#B76E79';
+          ctx.beginPath();
+          const s = this.size;
+          ctx.moveTo(0, s * 0.3);
+          ctx.bezierCurveTo(-s * 0.5, -s * 0.3, -s, s * 0.1, 0, s);
+          ctx.bezierCurveTo(s, s * 0.1, s * 0.5, -s * 0.3, 0, s * 0.3);
+          ctx.fill();
+        } else {
+          // Shimmering gold sparkle
+          ctx.fillStyle = '#E5C158';
+          ctx.beginPath();
+          ctx.arc(0, 0, this.size * 0.25, 0, Math.PI * 2);
+          ctx.fill();
+        }
+        ctx.restore();
+      }
+    }
+
+    function initParticles() {
+      particles = [];
+      const count = Math.min(Math.floor(canvas.width / 22), 50);
+      for (let i = 0; i < count; i++) {
+        const p = new Particle();
+        p.y = Math.random() * canvas.height; // Distribute initially
+        particles.push(p);
+      }
+    }
+    initParticles();
+
+    function animateParticles() {
+      ctx.clearRect(0, 0, canvas.width, canvas.height);
+      particles.forEach(p => {
+        p.update();
+        p.draw();
+      });
+      animationFrameId = requestAnimationFrame(animateParticles);
+    }
+    animateParticles();
+
+    /*
+      =============================================================================
+      3. AMBIENT SYNTH / ROMANTIC CHIME SOUND (100% Self-Contained)
+      =============================================================================
+      Uses the native browser Web Audio API to produce soft, celestial harp-like
+      musical chords on demand. No external audio files or broken links needed!
+    */
+    let audioCtx = null;
+    let isPlayingAudio = false;
+    let audioInterval = null;
+
+    const chords = [
+      [261.63, 329.63, 392.00, 523.25], // C Maj
+      [220.00, 261.63, 329.63, 440.00], // A Min
+      [174.61, 220.00, 261.63, 349.23], // F Maj
+      [196.00, 246.94, 293.66, 392.00], // G Maj
+    ];
+    let chordIdx = 0;
+
+    function playSoftPluck(freq, delay) {
+      if (!audioCtx) return;
+      const now = audioCtx.currentTime + delay;
+      const osc = audioCtx.createOscillator();
+      const gain = audioCtx.createGain();
+
+      osc.type = 'sine';
+      osc.frequency.setValueAtTime(freq, now);
+
+      gain.gain.setValueAtTime(0.001, now);
+      gain.gain.exponentialRampToValueAtTime(0.08, now + 0.05);
+      gain.gain.exponentialRampToValueAtTime(0.0001, now + 2.8);
+
+      osc.connect(gain);
+      gain.connect(audioCtx.destination);
+
+      osc.start(now);
+      osc.stop(now + 3.0);
+    }
+
+    function playArpeggio() {
+      const currentChord = chords[chordIdx % chords.length];
+      chordIdx++;
+      currentChord.forEach((f, i) => {
+        playSoftPluck(f, i * 0.4);
+      });
+    }
+
+    const audioToggleBtn = document.getElementById('audio-toggle-btn');
+    const audioIcon = document.getElementById('audio-icon');
+    const audioText = document.getElementById('audio-text');
+
+    audioToggleBtn.addEventListener('click', () => {
+      if (!isPlayingAudio) {
+        if (!audioCtx) {
+          audioCtx = new (window.AudioContext || window.webkitAudioContext)();
+        }
+        if (audioCtx.state === 'suspended') {
+          audioCtx.resume();
+        }
+        playArpeggio();
+        audioInterval = setInterval(playArpeggio, 3400);
+        isPlayingAudio = true;
+        audioIcon.className = 'fa-solid fa-volume-high text-rosegold-600 animate-pulse';
+        audioText.textContent = 'Music: Playing';
+      } else {
+        clearInterval(audioInterval);
+        isPlayingAudio = false;
+        audioIcon.className = 'fa-solid fa-volume-xmark text-rosegold-600';
+        audioText.textContent = 'Ambient Music';
+      }
+    });
+
+    /*
+      =============================================================================
+      4. LOVE LETTER TYPEWRITER EFFECT
+      =============================================================================
+    */
+    const originalTextSource = document.getElementById('original-letter-text');
+    const typewriterContainer = document.getElementById('typewriter-content');
+    const cursor = document.getElementById('cursor-indicator');
+    const replayBtn = document.getElementById('replay-letter-btn');
+    const revealAllBtn = document.getElementById('reveal-all-btn');
+
+    // Extract raw paragraphs
+    const paragraphs = Array.from(originalTextSource.querySelectorAll('p')).map(p => p.textContent.trim());
+    let currentParaIdx = 0;
+    let currentCharIdx = 0;
+    let typewriterTimer = null;
+    let hasTriggeredOnScroll = false;
+
+    function resetTypewriter() {
+      clearTimeout(typewriterTimer);
+      typewriterContainer.innerHTML = '';
+      currentParaIdx = 0;
+      currentCharIdx = 0;
+      cursor.style.display = 'inline-block';
+    }
+
+    function typeCharacter() {
+      if (currentParaIdx >= paragraphs.length) {
+        cursor.style.display = 'none';
+        return;
+      }
+
+      let currentParaElem = typewriterContainer.children[currentParaIdx];
+      if (!currentParaElem) {
+        currentParaElem = document.createElement('p');
+        currentParaElem.className = 'mb-4';
+        typewriterContainer.appendChild(currentParaElem);
+      }
+
+      const text = paragraphs[currentParaIdx];
+      if (currentCharIdx < text.length) {
+        currentParaElem.textContent += text.charAt(currentCharIdx);
+        currentCharIdx++;
+        // Adjust typing speed (randomized for natural feel: 15ms - 35ms)
+        const delay = Math.random() * 20 + 15;
+        typewriterTimer = setTimeout(typeCharacter, delay);
+      } else {
+        // Next paragraph after gentle pause
+        currentParaIdx++;
+        currentCharIdx = 0;
+        typewriterTimer = setTimeout(typeCharacter, 260);
+      }
+    }
+
+    function startTypewriter() {
+      resetTypewriter();
+      typeCharacter();
+    }
+
+    function revealAllText() {
+      clearTimeout(typewriterTimer);
+      typewriterContainer.innerHTML = '';
+      paragraphs.forEach(pText => {
+        const p = document.createElement('p');
+        p.className = 'mb-4';
+        p.textContent = pText;
+        typewriterContainer.appendChild(p);
+      });
+      cursor.style.display = 'none';
+    }
+
+    replayBtn.addEventListener('click', startTypewriter);
+    revealAllBtn.addEventListener('click', revealAllText);
+
+    // Trigger typewriter automatically when section is scrolled into view
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting && !hasTriggeredOnScroll) {
+          hasTriggeredOnScroll = true;
+          startTypewriter();
+        }
+      });
+    }, { threshold: 0.25 });
+
+    observer.observe(document.getElementById('love-letter'));
+
+    /*
+      =============================================================================
+      5. PURE JAVASCRIPT LIGHTBOX / MODAL
+      =============================================================================
+    */
+    const modal = document.getElementById('lightbox-modal');
+    const modalImg = document.getElementById('lightbox-img');
+    const modalCaption = document.getElementById('lightbox-caption');
+    const modalCounter = document.getElementById('lightbox-counter');
+    const closeBtn = document.getElementById('lightbox-close');
+    const prevBtn = document.getElementById('lightbox-prev');
+    const nextBtn = document.getElementById('lightbox-next');
+    const galleryItems = Array.from(document.querySelectorAll('.gallery-item'));
+    let activeGalleryIdx = 0;
+
+    function openLightbox(index) {
+      activeGalleryIdx = index;
+      const item = galleryItems[activeGalleryIdx];
+      const fullImgSrc = item.getAttribute('data-full');
+      const caption = item.getAttribute('data-caption');
+      const previewImg = item.querySelector('img');
+
+      // Use actual image or current fallback source
+      modalImg.src = fullImgSrc;
+      modalImg.onerror = () => {
+        // If external image is missing, clone preview img SVG or fallback
+        modalImg.src = previewImg.src;
+      };
+
+      modalCaption.textContent = caption || '';
+      modalCounter.textContent = `Memory ${activeGalleryIdx + 1} of ${galleryItems.length}`;
+
+      modal.classList.remove('hidden');
+      setTimeout(() => {
+        modal.classList.remove('opacity-0');
+      }, 10);
+      document.body.style.overflow = 'hidden';
+    }
+
+    function closeLightbox() {
+      modal.classList.add('opacity-0');
+      setTimeout(() => {
+        modal.classList.add('hidden');
+        modalImg.src = '';
+        document.body.style.overflow = '';
+      }, 300);
+    }
+
+    function showPrev() {
+      activeGalleryIdx = (activeGalleryIdx - 1 + galleryItems.length) % galleryItems.length;
+      openLightbox(activeGalleryIdx);
+    }
+
+    function showNext() {
+      activeGalleryIdx = (activeGalleryIdx + 1) % galleryItems.length;
+      openLightbox(activeGalleryIdx);
+    }
+
+    galleryItems.forEach((item, index) => {
+      item.addEventListener('click', () => openLightbox(index));
+    });
+
+    closeBtn.addEventListener('click', closeLightbox);
+    prevBtn.addEventListener('click', (e) => { e.stopPropagation(); showPrev(); });
+    nextBtn.addEventListener('click', (e) => { e.stopPropagation(); showNext(); });
+
+    modal.addEventListener('click', (e) => {
+      if (e.target === modal || e.target.classList.contains('fa-xmark')) {
+        closeLightbox();
+      }
+    });
+
+    // Keyboard support: ESC, Left, Right
+    document.addEventListener('keydown', (e) => {
+      if (modal.classList.contains('hidden')) return;
+      if (e.key === 'Escape') closeLightbox();
+      if (e.key === 'ArrowLeft') showPrev();
+      if (e.key === 'ArrowRight') showNext();
+    });
+
+    /*
+      =============================================================================
+      6. BIRTHDAY WISH & CANDLE BLOWING WITH CONFETTI EXPLOSION
+      =============================================================================
+    */
+    const candleTrigger = document.getElementById('candle-trigger');
+    const blowBtn = document.getElementById('blow-candles-btn');
+    const candleBtnText = document.getElementById('candle-btn-text');
+    const flame = document.getElementById('candle-flame');
+    const wishRevealed = document.getElementById('wish-revealed');
+    const relightBtn = document.getElementById('relight-candle-btn');
+    let isExtinguished = false;
+
+    function triggerConfettiBurst() {
+      if (typeof confetti !== 'function') return;
+
+      // Romantic Palette: Gold, Rose Gold, Pink, Pearl White, Burgundy
+      const colors = ['#D4AF37', '#B76E79', '#F2D7D9', '#531D26', '#FFFFFF', '#E5C158'];
+
+      // Stage 1: Big Center Cannon
+      confetti({
+        particleCount: 80,
+        spread: 100,
+        origin: { y: 0.65 },
+        colors: colors,
+        disableForReducedMotion: true
+      });
+
+      // Stage 2: Left & Right Cross Fire (after 250ms)
+      setTimeout(() => {
+        confetti({
+          particleCount: 50,
+          angle: 60,
+          spread: 70,
+          origin: { x: 0, y: 0.7 },
+          colors: colors
+        });
+        confetti({
+          particleCount: 50,
+          angle: 120,
+          spread: 70,
+          origin: { x: 1, y: 0.7 },
+          colors: colors
+        });
+      }, 250);
+
+      // Stage 3: Gentle gold dust rain (after 600ms)
+      setTimeout(() => {
+        confetti({
+          particleCount: 40,
+          spread: 120,
+          startVelocity: 25,
+          decay: 0.92,
+          scalar: 1.2,
+          origin: { y: 0.4 },
+          colors: ['#D4AF37', '#F3E5AB']
+        });
+      }, 600);
+    }
+
+    function blowOutCandle() {
+      if (isExtinguished) return;
+      isExtinguished = true;
+
+      // Animate flame out
+      flame.classList.add('extinguished');
+      candleBtnText.textContent = 'Wish Made! Happy Birthday!';
+      blowBtn.classList.remove('from-burgundy-700', 'via-burgundy-800', 'to-burgundy-900');
+      blowBtn.classList.add('from-rosegold-500', 'to-burgundy-700');
+
+      // Fire Celebration Confetti
+      triggerConfettiBurst();
+
+      // Reveal permanent closing emotional message
+      wishRevealed.classList.remove('hidden');
+      setTimeout(() => {
+        wishRevealed.classList.remove('opacity-0', 'translate-y-6');
+      }, 50);
+    }
+
+    function relightCandle() {
+      isExtinguished = false;
+      flame.classList.remove('extinguished');
+      candleBtnText.textContent = 'Blow Out The Candle & Make A Wish';
+      blowBtn.classList.add('from-burgundy-700', 'via-burgundy-800', 'to-burgundy-900');
+      blowBtn.classList.remove('from-rosegold-500', 'to-burgundy-700');
+    }
+
+    blowBtn.addEventListener('click', blowOutCandle);
+    candleTrigger.addEventListener('click', blowOutCandle);
+    relightBtn.addEventListener('click', relightCandle);
+
+    /*
+      =============================================================================
+      7. GSAP SCROLL ENHANCEMENTS (Soft Scroll Reveals)
+      =============================================================================
+    */
+    if (window.gsap && window.ScrollTrigger) {
+      gsap.registerPlugin(ScrollTrigger);
+
+      // Smooth fade in for story articles
+      gsap.utils.toArray('#our-story article').forEach((article) => {
+        gsap.from(article, {
+          scrollTrigger: {
+            trigger: article,
+            start: 'top 85%',
+            toggleActions: 'play none none none'
+          },
+          opacity: 0,
+          y: 35,
+          duration: 0.9,
+          ease: 'power2.out'
+        });
+      });
+
+      // Gallery items staggered entry
+      gsap.from('.gallery-item', {
+        scrollTrigger: {
+          trigger: '#photo-gallery',
+          start: 'top 80%',
+          toggleActions: 'play none none none'
+        },
+        opacity: 0,
+        y: 25,
+        stagger: 0.08,
+        duration: 0.7,
+        ease: 'power2.out'
+      });
+    }
+  </script>
+</body>
+</html>
